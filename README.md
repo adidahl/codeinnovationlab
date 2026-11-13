@@ -1,6 +1,6 @@
 # codeinnovationlab.no
 
-One-page site for Code Innovation Lab (Next.js, light theme only, same style as Vibefort).
+One-page site for Code Innovation Lab (Next.js, light theme only, same style as Vibefortress).
 
 ```bash
 npm install

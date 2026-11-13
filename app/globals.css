@@ -1,4 +1,6 @@
-/* Same design language as Vibefort (light only): warm near-black ink, warm grey panels, one lime highlight,
+@import "tailwindcss";
+
+/* Same design language as Vibefortress (light only): warm near-black ink, warm grey panels, one lime highlight,
    regular-weight Inter, no shadows, radii 6/8/12/18. */
 :root {
   --bg: #ffffff;
@@ -12,7 +14,20 @@
   --pop: #e4f222;
   --pop-hover: #d6e40f;
   --pop-ink: #0c0a08;
+  --card: #ffffff;
+  --ink-2: rgb(12 10 8 / 0.8);
+  --crit: #c2341f; --high: #b84a00; --ok: #18794e;
+  --crit-soft: #fbe9e5; --high-soft: #fcefe2; --ok-soft: #e3f3ea;
   color-scheme: light;
+}
+
+@theme inline {
+  --color-bg: var(--bg); --color-bg-soft: var(--bg-soft); --color-card: var(--card);
+  --color-ink: var(--ink); --color-muted: var(--muted); --color-line: var(--line); --color-line-strong: var(--line-strong);
+  --color-pop: var(--pop); --color-pop-ink: var(--pop-ink);
+  --color-crit: var(--crit); --color-high: var(--high); --color-ok: var(--ok);
+  --color-crit-soft: var(--crit-soft); --color-high-soft: var(--high-soft); --color-ok-soft: var(--ok-soft);
+  --font-mono: var(--font-plex), "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
 }
 * { box-sizing: border-box; }
 html { background: var(--bg); color: var(--ink); -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
@@ -87,7 +102,7 @@ section { scroll-margin-top: 80px; }
 @media (min-width: 640px) { .panel { padding: 48px; } }
 .cards { display: grid; gap: 12px; }
 @media (min-width: 768px) { .cards.three { grid-template-columns: repeat(3, 1fr); } .cards.two { grid-template-columns: repeat(2, 1fr); } }
-.card { background: #fff; border-radius: 12px; padding: 24px; }
+.card { background: var(--bg-soft); border-radius: 12px; padding: 24px; }
 .card h3 { font-size: 20px; font-weight: 400; letter-spacing: -0.01em; line-height: 1.2; }
 .card p { margin-top: 8px; font-size: 15px; line-height: 1.45; color: var(--muted); }
 .tile {
@@ -127,3 +142,20 @@ section { scroll-margin-top: 80px; }
 @media (min-width: 768px) { .footer .container { flex-direction: row; align-items: center; justify-content: space-between; } }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Demo window: the look of the Claude desktop app on a Mac, drawn in code (copied from the Vibefortress site, light only). */
+.cl {
+  --cl-main: #ffffff; --cl-side: #ebebeb; --cl-line: #e6e6e6; --cl-line-strong: #dadada; --cl-bubble: #f3f3f3; --cl-row: #d9d9d9;
+  --cl-ink: #191919; --cl-muted: #666666; --cl-faint: #878787; --cl-clay: #cc7c5e; --cl-composer: #ffffff;
+  --cl-send: #191919; --cl-send-ink: #ffffff; --cl-shadow: 0 4px 18px rgb(0 0 0 / 0.06);
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", sans-serif;
+  font-feature-settings: normal; color: var(--cl-ink);
+}
+@keyframes cl-dot { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+.cl-dots span { animation: cl-dot 1.2s ease-in-out infinite; }
+.cl-dots span:nth-child(2) { animation-delay: 0.3s; }
+.cl-dots span:nth-child(4) { animation-delay: 0.6s; }
+.cl-dots span:nth-child(3) { animation-delay: 0.9s; }
+@keyframes blink { 50% { opacity: 0; } }
+.caret { animation: blink 1s step-end infinite; }
+@media (prefers-reduced-motion: reduce) { .caret, .cl-dots span { animation: none !important; } }

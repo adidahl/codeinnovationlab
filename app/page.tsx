@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { HeroDemo } from "../components/HeroDemo";
 
 const EMAIL = "support@codeinnovationlab.no";
 const VIBEFORT_URL = "https://vibefortress.com";
@@ -36,7 +37,7 @@ export default function Home() {
           <a href="#top" aria-label="Code Innovation Lab home"><Logo /></a>
           <nav className="nav" aria-label="Main">
             <a className="link" href="#what">What we do</a>
-            <a className="link" href="#vibefort">Vibefort</a>
+            <a className="link" href="#vibefort">Vibefortress</a>
             <a className="btn btn-sm btn-primary" href="#contact">Contact</a>
           </nav>
         </div>
@@ -46,7 +47,7 @@ export default function Home() {
         <section className="hero">
           <div className="grid-bg" />
           <div className="container hero-inner">
-            <a className="note" href="#vibefort">New: we are building Vibefort →</a>
+            <a className="note" href="#vibefort">New: we are building Vibefortress →</a>
             <h1>Software, built carefully in Norway.</h1>
             <p className="lead">
               Code Innovation Lab is a Norwegian company that builds software. Small team, clear products, plain English.
@@ -87,32 +88,23 @@ export default function Home() {
 
         <section id="vibefort" className="section">
           <div className="container">
-            <div className="panel product">
-              <div>
-                <p className="eyebrow">Our product</p>
-                <h2>Vibefort</h2>
-                <p className="t">
-                  A security expert inside Claude for people who build apps with AI. Say &quot;check my app&quot; and Vibefort finds the
-                  holes, explains them in plain English and opens the fix as a pull request.
-                </p>
-                <ul className="checks">
-                  <li><Check />Finds leaked secrets, risky packages and common code mistakes</li>
-                  <li><Check />Explains every finding in plain English</li>
-                  <li><Check />Shows what is ready when a customer asks about compliance</li>
-                </ul>
-                <div className="actions">
-                  <a className="btn btn-pop" href={VIBEFORT_URL}>Visit Vibefort</a>
-                  <a className="btn btn-outline" href={`mailto:${EMAIL}?subject=Vibefort`}>Ask us about it</a>
-                </div>
-              </div>
-              <div className="chat" aria-label="Example conversation">
-                <div className="you">check my app</div>
-                <div className="vf"><b>Vibefort</b> found 3 things to fix before you launch. The most urgent: an API key is checked into your repository. Want me to open a pull request?</div>
-                <div className="you">yes, please</div>
+            <div className="head">
+              <p className="eyebrow">Our product</p>
+              <h2>Vibefortress</h2>
+              <p>
+                A security expert inside Claude for people who build apps with AI. Say &quot;check my app&quot; and Vibefortress finds the
+                holes, explains them in plain English and opens the fix as a pull request.
+              </p>
+              <div className="actions" style={{ marginTop: 24, display: "flex", flexWrap: "wrap", gap: 10, justifyContent: "center" }}>
+                <a className="btn btn-pop" href={VIBEFORT_URL}>Visit Vibefortress</a>
+                <a className="btn btn-outline" href={`mailto:${EMAIL}?subject=Vibefortress`}>Ask us about it</a>
               </div>
             </div>
+            <div className="panel" id="demo">
+              <HeroDemo />
+            </div>
             <p style={{ marginTop: 12, textAlign: "center", fontSize: 12.5, color: "var(--muted)" }}>
-              Example conversation with made-up data. Vibefort is an independent product, not made by Anthropic.
+              A scripted demo with made-up data, styled after the Claude desktop app. Vibefortress is an independent product, not made by Anthropic.
             </p>
           </div>
         </section>
